@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { resolverOchoReinas, type Solution } from '../utils/eightQueens';
 import './QueensGame.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChessQueen } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function QueensGame() {
   // Estado para la posición inicial que el usuario ingresa
@@ -28,7 +31,7 @@ export default function QueensGame() {
       setIndiceSolucion(0);
     } else {
       // Si hay soluciones
-      setMensaje(`✅ Se encontraron ${resultados.length} solución(es)`);
+      setMensaje(`Se encontraron ${resultados.length} solución(es)`);
       setSoluciones(resultados);
       setIndiceSolucion(0);
     }
@@ -162,7 +165,7 @@ function Board({ solucion, filaInicial, colInicial }: BoardProps) {
                   tieneReina ? 'con-reina' : ''
                 } ${esReginaInicial ? 'reina-inicial' : ''}`}
               >
-                {tieneReina && <span className="reina">♛</span>}
+                {tieneReina && <span className="reina"><FontAwesomeIcon icon={faChessQueen} /></span>}
               </div>
             );
           })}

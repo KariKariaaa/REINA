@@ -72,7 +72,7 @@ button {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #333;
   color: white;
   text-transform: uppercase;
 }
@@ -143,11 +143,11 @@ button:disabled {
 }
 
 .casilla.cremosa {
-  background-color: #f5e6d3;
+  background-color: #816c50;
 }
 
 .casilla.gris {
-  background-color: #b8b8b8;
+  background-color: #333;
 }
 
 .casilla.con-reina:hover {
@@ -156,7 +156,7 @@ button:disabled {
 
 .casilla.reina-inicial .reina {
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
-  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
+  filter: drop-shadow(0 0 4px rgb(255, 217, 0));
 }
 
 .reina {
@@ -175,6 +175,7 @@ button:disabled {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  color: #333;
 }
 
 .counter {
