@@ -164,6 +164,7 @@ button:disabled {
   align-items: center;
   justify-content: center;
   user-select: none;
+  color:#ffffff;
 }
 
 /* Navegación */
