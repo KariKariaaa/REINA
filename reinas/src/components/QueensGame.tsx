@@ -6,45 +6,42 @@ import { faChessQueen } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function QueensGame() {
-  // Estado para la posición inicial que el usuario ingresa
+  // Estados formulario
   const [filaInicial, setFilaInicial] = useState<number>(0);
   const [colInicial, setColInicial] = useState<number>(0);
 
-  // Estado para las soluciones encontradas
+  // Soluciones encontradas
   const [soluciones, setSoluciones] = useState<Solution[]>([]);
 
-  // Estado para el índice de la solución actual que se está visualizando
+  // Inidice soluciones
   const [indiceSolucion, setIndiceSolucion] = useState<number>(0);
 
-  // Estado para mensajes (no hay solución, etc.)
+  // Consola menssaje
   const [mensaje, setMensaje] = useState<string>('');
 
-  // Función que se ejecuta cuando el usuario hace clic en "Resolver"
+  // Acción botón resolver
   const handleResolver = () => {
-    // Resolvemos el problema de 8 reinas con la posición inicial
+    //Llamamos la función inicial
     const resultados = resolverOchoReinas(filaInicial, colInicial);
-
     if (resultados.length === 0) {
-      // Si no hay soluciones
       setMensaje('No se encontró solución con esa posición inicial.');
       setSoluciones([]);
       setIndiceSolucion(0);
     } else {
-      // Si hay soluciones
       setMensaje(`Se encontraron ${resultados.length} solución(es)`);
       setSoluciones(resultados);
       setIndiceSolucion(0);
     }
   };
 
-  // Función para ir a la siguiente solución
+  // Navegar solución siguiente
   const handleSiguiente = () => {
     if (indiceSolucion < soluciones.length - 1) {
       setIndiceSolucion(indiceSolucion + 1);
     }
   };
 
-  // Función para ir a la solución anterior
+  // Navegar solución anterior
   const handleAnterior = () => {
     if (indiceSolucion > 0) {
       setIndiceSolucion(indiceSolucion - 1);
@@ -58,7 +55,7 @@ export default function QueensGame() {
     <div className="queens-container">
       <h1>Problema de las 8 Reinas</h1>
 
-      {/* Panel de control */}
+      {/* Formulario posición inicial */}
       <div className="control-panel">
         <div className="input-group">
           <label>
@@ -106,12 +103,12 @@ export default function QueensGame() {
         {mensaje && <p className="mensaje">{mensaje}</p>}
       </div>
 
-      {/* Tablero visual */}
+      {/* Tablero */}
       {solucionActual && (
         <div className="main-content">
           <Board solucion={solucionActual} filaInicial={filaInicial} colInicial={colInicial} />
 
-          {/* Navegación entre soluciones */}
+          {/* Navegación soluciones*/}
           {soluciones.length > 1 && (
             <div className="navigation">
               <button onClick={handleAnterior} disabled={indiceSolucion === 0}>
@@ -137,7 +134,7 @@ export default function QueensGame() {
 }
 
 /**
- * Componente que renderiza el tablero de ajedrez con las reinas
+ * Render tablero
  */
 interface BoardProps {
   solucion: number[];
@@ -153,9 +150,9 @@ function Board({ solucion, filaInicial, colInicial }: BoardProps) {
           {Array.from({ length: 8 }).map((_, col) => {
             // Determinamos si hay una reina en esta casilla
             const tieneReina = columna === col;
-            // Determinamos si es la reina inicial del usuario
+            // Determinamos si es la reina inicial
             const esReginaInicial = fila === filaInicial && col === colInicial;
-            // Determinamos el color de la casilla (alternando)
+            // Determinamos el color de la casilla
             const esCasillaCremosa = (fila + col) % 2 === 0;
 
             return (
